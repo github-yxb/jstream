@@ -1,2 +1,2 @@
-from stream import Stream
+from stream import JStream
 from collectors import *

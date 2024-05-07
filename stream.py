@@ -4,7 +4,7 @@ from collections.abc import Iterable, Callable
 from collectors import Collector
 
 
-class Stream:
+class JStream:
     def __init__(self, data: Iterable):
         self.data = data
 

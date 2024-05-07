@@ -1,5 +1,5 @@
 import unittest
-from stream import Stream
+from stream import JStream
 from collectors import (
     ToListCollector,
     GroupingByCollector,
@@ -10,7 +10,7 @@ from collectors import (
 
 class Test(unittest.TestCase):
     def setUp(self) -> None:
-        self.stream1 = Stream(
+        self.stream1 = JStream(
             [
                 {"student": "A", "score": 100, "class": "A"},
                 {"student": "A", "score": 99, "class": "B"},
