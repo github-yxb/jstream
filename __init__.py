@@ -1,2 +1,5 @@
+import collectors
 from stream import JStream
-from collectors import *
+
+
+__all__ = ("collectors", "JStream")
