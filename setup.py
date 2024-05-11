@@ -5,7 +5,7 @@ with open("README.md") as fh:
 
 setuptools.setup(
     name="jstream",
-    version="0.1",
+    version="0.4",
     author="yuanxb",
     author_email="",
     description="Simple stream tool like java",
@@ -20,5 +20,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     # 依赖模块
-    python_requires=">=3.11",
+    python_requires=">=3.10",
 )
