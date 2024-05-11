@@ -1,5 +1,5 @@
 import collectors
-from stream import JStream
+from jstream import JStream
 
 
 __all__ = ("collectors", "JStream")

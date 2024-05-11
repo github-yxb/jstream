@@ -1,5 +1,5 @@
 import unittest
-from stream import JStream
+from jstream import JStream
 from collectors import (
     ToListCollector,
     GroupingByCollector,
