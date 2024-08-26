@@ -60,6 +60,7 @@ class GroupingByCollector(Collector):
 
         return _inner
 
+
 class MaxByCollector(Collector):
     def __init__(self, key_extra: Callable | None = None) -> None:
         self.key_extra = key_extra

@@ -5,7 +5,7 @@ with open("README.md") as fh:
 
 setuptools.setup(
     name="jstream",
-    version="0.4",
+    version="0.5",
     author="yuanxb",
     author_email="",
     description="Simple stream tool like java",
@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/github-yxb/jstream",
     packages=setuptools.find_packages(),
+    include_package_data=True,
     # 模块相关的元数据
     classifiers=[
         "Programming Language :: Python :: 3",

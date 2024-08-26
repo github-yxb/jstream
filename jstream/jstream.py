@@ -1,11 +1,14 @@
 import itertools
-from collections.abc import Iterable, Callable
+from typing import Callable, Generic, Iterable, TypeVar
 
-from collectors import Collector
+from .collectors import Collector
+
+T = TypeVar("T")
+JStreamSelf = TypeVar("JStreamSelf", bound="JStream")
 
 
-class JStream:
-    def __init__(self, data: Iterable):
+class JStream(Generic[T]):
+    def __init__(self, data: Iterable[T]):
         self.data = data
 
     def skip(self, num: int):
@@ -14,14 +17,14 @@ class JStream:
     def limit(self, max_size: int):
         return self.__class__(itertools.islice(self.data, max_size))
 
-    def map(self, key_func: Callable):
+    def map(self, key_func: Callable) -> JStreamSelf:
         def _map(key_func, iterable):
             for x in iterable:
                 yield key_func(x)
 
         return self.__class__(_map(key_func, self.data))
 
-    def filter(self, predicate):
+    def filter(self, predicate) -> JStreamSelf:
         def _filter(predicate, iterable):
             if predicate is None:
                 predicate = bool
@@ -31,10 +34,10 @@ class JStream:
 
         return self.__class__(_filter(predicate, self.data))
 
-    def to_list(self) -> list:
+    def to_list(self) -> list[T]:
         return list(self.data)
 
-    def to_set(self) -> set:
+    def to_set(self) -> set[T]:
         return set(self.data)
 
     def all(self, predicate) -> bool:
@@ -43,13 +46,13 @@ class JStream:
     def any(self, predicate) -> bool:
         return any(predicate(d) for d in self.data)
 
-    def first_else_none(self, predicate):
+    def first_else_none(self, predicate) -> T | None:
         for d in self.data:
             if predicate(d):
                 return d
         return None
 
-    def sum(self):
+    def sum(self) -> int:
         return sum(self.data)
 
     def collect(self, collector: Collector):

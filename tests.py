@@ -1,6 +1,6 @@
 import unittest
 from jstream import JStream
-from collectors import (
+from jstream.collectors import (
     ToListCollector,
     GroupingByCollector,
     CountingCollector,
